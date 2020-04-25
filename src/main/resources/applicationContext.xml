@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:sport.properties"/>
+    <bean id="myFortune"
+    class="com.elagin.dmitry.beans.RandomFortuneService"
+    scope="prototype"
+    >
+        <property name="fortunes">
+            <list>
+                <value>Сегодня удачный день</value>
+                <value>Сегодня обычный день</value>
+                <value>Сегодня неудачный день</value>
+
+<!--                <ref bean="classic"/>-->
+<!--                <ref bean="blues"/>-->
+<!--                <ref bean="rock"/>-->
+
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="myCoach"
+          class="com.elagin.dmitry.beans.HockeyCoach"
+          >
+        <property name="email" value="${coach.email}"/>
+        <property name="team" value="${coach.team}"/>
+        <!--<constructor-arg name="fortune" ref="myFortune"/>-->
+    </bean>
+
+    <bean id="liftingCoach" class="com.elagin.dmitry.beans.PowerliftingCoach"
+    init-method="init" destroy-method="destroy"
+    />
+    <bean id="boxingCoach" class="com.elagin.dmitry.beans.BoxingCoach">
+        <property name="fortune" ref="myFortune"/>
+        <property name="firstName" value="Растям"/>
+        <property name="lastName" value="Батериков"/>
+    </bean>
+
+
+    
+    
+</beans>
