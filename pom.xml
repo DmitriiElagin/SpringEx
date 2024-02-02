@@ -17,7 +17,7 @@
     </build>
     <name>SpringEx</name>
   <properties>
-  <spring_version>5.2.5.RELEASE</spring_version>
+  <spring_version>5.2.22.RELEASE</spring_version>
   </properties>
   <dependencies>
   <dependency>
